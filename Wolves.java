@@ -68,9 +68,9 @@ public class Wolves {
         Wolf[] wolvesPool = new Wolf[5];
         wolvesPool[0] = new RandomWolf();
         wolvesPool[1] = new RandomWolf();
-        wolvesPool[2] = new RandomWolf();
-        wolvesPool[3] = new RandomWolf();
-        wolvesPool[4] = new RandomWolf();
+        wolvesPool[2] = new TeamPlayerWolf(); // RandomWolf();
+        wolvesPool[3] = new TeamPlayerWolf(); // RandomWolf();
+        wolvesPool[4] = new TeamPlayerWolf(); // RandomWolf();
 
         // Below code will select three random wolves from the pool.
         // Make the pool as large as you want, but not < numWolves
@@ -111,11 +111,12 @@ public class Wolves {
         int[][] safetyGrid;
         if (!limitMovement) {
             // Wolves can move diagonally
-            for (int i = 0; i<numWolves; i++) {
+			for (int i = 0; i<numWolves; i++) {
                 safetyGrid = new int[grid.length][grid[0].length];
                 for (int r=0; r<grid.length; r++)
                     for (int s=0; s<grid[0].length; s++)
                         safetyGrid[r][s] = grid[r][s];
+				
                 moves[i] = wolves[i].moveAll(getWolfViewW(i), getWolfViewP(i));
             }
         } else {
